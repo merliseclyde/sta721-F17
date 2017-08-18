@@ -1,10 +1,16 @@
-baseurl = "https://example.com/"  # End your URL with a `/` trailing slash.
+baseurl = "https://stat.duke.edu/courses/Fall17/sta721/"  # End your URL with a `/` trailing slash.
 title = "STA 721 (Fall 2017)"
 copyright = "&copy; 2017 Merlise A Clyde"
 theme = "hugo-academic"
+
+
 relativeurls = true
+canonifyURLs = true
 enableEmoji = true
 footnotereturnlinkcontents = "<sup>^</sup>"
+
+#ignore R files
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
 # Enable comments by entering your Disqus shortname
 disqusShortname = ""
