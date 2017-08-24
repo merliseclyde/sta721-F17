@@ -3,8 +3,9 @@ title = "STA 721 (Fall 2017)"
 copyright = "&copy; 2017 Merlise A Clyde"
 theme = "hugo-academic"
 
-
-relativeurls = true
+# comment out for deployment
+#relativeurls = true
+# uncomment below for deployment
 canonifyURLs = true
 enableEmoji = true
 footnotereturnlinkcontents = "<sup>^</sup>"
@@ -160,41 +161,44 @@ defaultContentLanguageInSubdir = false
   url = "#about"
   weight = 1
 
-[[menu.main]]
-  name = "Syllabus"
-  url = "#syllabus"
-  weight = 2
 
 [[menu.main]]
   name = "Lectures"
   url = "#lectures_selected"
-  weight = 3
+  weight = 2
 
 [[menu.main]]
   name = "Assignments"
   url = "#assignments"
+  weight = 3
+
+[[menu.main]]
+  name = "Data Analysis Project"
+  url = "#projects"
   weight = 4
 
 [[menu.main]]
-  name = "Resources"
-  url = "#resources"
+  name = "Calendar"
+  url = "#calendar"
   weight = 5
 
 
 [[menu.main]]
-  name = "Data Analysis"
-  url = "#projects"
+  name = "Syllabus"
+  url = "#syllabus"
   weight = 6
 
 [[menu.main]]
-  name = "Calendar"
-  url = "#teaching"
+  name = "Resources"
+  url = "#resources"
   weight = 7
+
+
 
 [[menu.main]]
   name = "Contact"
   url = "#contact"
-  weight = 7
+  weight = 8
 
 # Taxonomies.
 [taxonomies]

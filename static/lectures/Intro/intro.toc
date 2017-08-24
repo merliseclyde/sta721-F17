@@ -1,0 +1,2 @@
+\beamer@sectionintoc {1}{Coordinates}{2}{0}{1}
+\beamer@sectionintoc {2}{Course Overview}{3}{0}{2}
