@@ -39,8 +39,8 @@ review linear algebra, please explore material under  [Resources](#resources)
 | Name  | email |  location | office hours |
 |:---------------------|:----------------------|:------------|:-----------|
 | [Dr. Merlise Clyde ](http://stat.duke.edu/~clyde) | [clyde@duke.edu](mailto:clyde@duke.edu) | 214A Old Chem |TBA or by appointment|
-| [Derek Owens-Oas (TA)](http://stat.duke.edu/people/derek-owens-oas)|[derek.owens.oas@duke.edu](mailto:derek.owens.oas@duke.edu) | 211 Old Chem | TBA |
-|[Willem van de Boom (TA)](http://stat.duke.edu/people/willem-van-den-boom) | [willem.van.den.boom@duke.edu](mailto:willem.van.den.boom@duke.edu)      | 211 Old Chem |TBA |
+| [Isaac Levine (TA)](http://stat.duke.edu/people/isaac-levine)|[issac.levine@duke.edu](mailto:isaac.levine@duke.edu) | 211 Old Chem | TBA |
+
 
 
 * * *

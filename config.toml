@@ -4,7 +4,7 @@ copyright = "&copy; 2017 Merlise A Clyde"
 theme = "hugo-academic"
 
 # comment out for deployment
-#relativeurls = true
+# relativeurls = true
 # uncomment below for deployment
 canonifyURLs = true
 enableEmoji = true
