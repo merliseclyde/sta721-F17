@@ -7,7 +7,10 @@ REMOTE ?= $(REMOTEUSER)@$(HOST):$(DIR)
 clean:
 	rm -rf public/*
 
-push:
+404:
+	cp .htaccess public/.htaccess
+
+push: 404
 	rsync -azv --delete  public/* $(REMOTE)
 
 unbind:
