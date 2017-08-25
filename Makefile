@@ -11,7 +11,7 @@ clean:
 	cp .htaccess public/.htaccess
 
 push: 404
-	rsync -azv --delete  public/* $(REMOTE)
+	rsync -azv --delete  --exclude='.DS_Store'  public/ $(REMOTE)
 
 unbind:
 	lsof -wni tcp:4000

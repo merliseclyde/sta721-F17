@@ -39,7 +39,7 @@ review linear algebra, please explore material under  [Resources](#resources)
 | Name  | email |  location | office hours |
 |:---------------------|:----------------------|:------------|:-----------|
 | [Dr. Merlise Clyde ](http://stat.duke.edu/~clyde) | [clyde@duke.edu](mailto:clyde@duke.edu) | 214A Old Chem |TBA or by appointment|
-| [Isaac Levine (TA)](http://stat.duke.edu/people/isaac-lavine)|[issac.lavine@duke.edu](mailto:isaac.lavine@duke.edu) | 211 Old Chem | TBA |
+| [Isaac Levine (TA)](http://stat.duke.edu/people/isaac-lavine)|[issac.lavine@duke.edu](mailto:isaac.lavine@duke.edu) | 211 Old Chem | Mon 3-4, Wed 4-5 |
 
 
 
