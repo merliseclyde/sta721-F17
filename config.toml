@@ -6,7 +6,7 @@ theme = "hugo-academic"
 # comment out for deployment
 # relativeurls = true
 # uncomment below for deployment
-canonifyURLs = true
+ canonifyURLs = true
 enableEmoji = true
 footnotereturnlinkcontents = "<sup>^</sup>"
 
