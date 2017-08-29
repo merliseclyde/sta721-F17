@@ -47,5 +47,5 @@ weight = 60
 | 15| 12-05-2017 | Graduate Reading Period | |
 |   | 12-07-2017 | Graduate Reading Period | |
 | 16| 12-12-2017 | Graduate Reading Period | |
-|   |        | Finals | |
-| 17|        | Finals | |
+|   | 12-14-2017 | Final Exam 9-12 Link Classroom 4 | |
+

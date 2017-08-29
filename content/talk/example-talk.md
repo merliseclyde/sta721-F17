@@ -1,6 +1,6 @@
 +++
-date = "2017-08-28"
-title = "Example HW"
+date = "2017-08-29"
+title = "HW 0"
 abstract = ""
 abstract_short = ""
 
@@ -13,8 +13,8 @@ url_video = ""
 
 # Optional featured image (relative to `static/img/` folder).
 [header]
-image = "headers/bubbles-wide.jpg"
-caption = "My caption :smile:"
+image = "headers/Bayes_Theorem.jpg"
+caption = "https://commons.wikimedia.org/wiki/File:Bayes%27_Theorem_MMB_01.jpg"
 
 +++
 

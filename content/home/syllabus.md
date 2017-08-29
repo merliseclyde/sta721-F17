@@ -100,7 +100,6 @@ You are welcomed, and encouraged, to work with each other on the problems, but y
   uploading a PDF. If the TAs cannot view your work, or read your
   handwriting, you will lose points accordingly.
 
-All assignments will be time stamped and late work will be penalized based on this time stamp (see late work policy below).
 
 * * *
 
@@ -142,12 +141,15 @@ and can write as small as you wish.
 
 ### Policies Regarding Homework:
 
-* No late Homework:
-* the lowest HW score will be dropped automatically at the end of the semester 
+* No late Homework
+
+* The lowest HW score will be dropped automatically at the end of the semester 
 
 * Late work policy for TakeHome Data Analysis: 10% off for each day late.
 
-* The final exam must be taken at the stated time.
+* The final exam must be taken at the stated time. Please book flights accordingly!
+
+* There will be no Makeup exams; if you miss the midterm for any reason, your grade on the final will be used to fill in the missing grade.
 
 * Regrade requests must be made **within 3 days** of when the assignment is returned, and must be submitted in writing. These will be honored if points were tallied incorrectly, or if you feel your answer is correct but it was marked wrong. No regrade will be made to alter the number of points deducted for a mistake. There will be no grade changes after the final exam.
 
