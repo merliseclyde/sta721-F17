@@ -2,6 +2,10 @@
 .Rhistory
 .Rapp.history
 
+#webfiles
+
+public
+
 # Session Data files
 .RData
 
@@ -10,6 +14,7 @@
 
 # Output files from R CMD build
 /*.tar.gz
+
 
 static/lectures/*/*.log
 static/lectures/*/*.syntex.gz
