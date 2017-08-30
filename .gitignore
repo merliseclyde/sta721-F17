@@ -11,6 +11,13 @@
 # Output files from R CMD build
 /*.tar.gz
 
+static/lectures/*/*.log
+static/lectures/*/*.syntex.gz
+static/lectures/*/*-concordance.tex
+static/lectures/*/*.vrb
+static.lectures/*/*.nav
+static/lectures/*/*.snm
+
 # Output files from R CMD check
 /*.Rcheck/
 
