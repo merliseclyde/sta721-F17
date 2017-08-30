@@ -16,7 +16,7 @@ weight = 60
 
 | Week |  Date      | Topic |   HW |
 |:--:|:-------------:|:---------------------------|:---|
-| 1 | 08-29-2017   |  [Introduction](publication/intro/) |       |
+| 1 | 08-29-2017   |  [Introduction](publication/intro/) | [HW0](talk/hw00)    |
 |   | 08-31-2017 | | |
 | 2 | 09-05-2017 | | |
 |   | 09-07-2017 | | |
@@ -47,5 +47,5 @@ weight = 60
 | 15| 12-05-2017 | Graduate Reading Period | |
 |   | 12-07-2017 | Graduate Reading Period | |
 | 16| 12-12-2017 | Graduate Reading Period | |
-|   | 12-14-2017 | Final Exam 9-12 Link Classroom 4 | |
+|   | 12-14-2017 | Final Exam 9-12 | Link Classroom 4 |
 

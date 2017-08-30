@@ -1,0 +1,609 @@
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
+%\usepackage[dvips]{color}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,array,comment,eucal}
+\input{../macros}
+\usepackage{verbatim}
+
+\usetheme{Warsaw}
+\usecolortheme{orchid}
+\title{Maximum Likelihood Estimation}
+\subtitle{Merlise Clyde}
+\author{STA721 Linear Models}
+\institute{Duke University}
+\date{August 31, 2017}
+\logo{duke.eps}
+
+\begin{document}
+\maketitle
+\begin{frame}\frametitle{Outline}
+Topics
+  \begin{itemize}
+ \item Likelihood Function
+  \item Projections
+  \item Maximum Likelihood Estimates
+%  \item Spectral Decomposition
+%  \item Generalized Inverses
+
+ % \item Quadratic Forms
+
+  \end{itemize}
+
+
+Readings: Christensen Chapter 1-2, Appendix A, and Appendix B
+\end{frame}
+
+
+%\section{Models}
+\begin{frame}
+  \frametitle{Models}
+Take an random vector $\Y \in \bbR^n$ which is observable and decompose  \pause
+$$ \Y = \alert<2>{\mub} + \alert<3>{\eps}$$
+into  \alert<2>{$\mub \in \bbR^n$ (unknown, fixed)} \pause and
+\alert<3>{$\eps \in \bbR^n$ unobservable error vector (random)}
+\pause
+
+\vspace{18pt}
+Usual assumptions? \pause
+\begin{itemize}
+\item $E[\epsilon_i] = 0 \ \forall i \Leftrightarrow \E[\eps] = \zero$ \pause  $ \quad \Rightarrow \E[\Y] = \mub$
+  (mean vector) \pause
+\item $\epsilon_i$ independent with $\Var(\epsilon_i) = \sigma^2$ and
+  $\Cov(\epsilon_i, \epsilon_j) = 0$
+\item Matrix version $$\Cov[\eps] \equiv \left[ (\E\left[\epsilon_i -
+  \E[\epsilon_i]\right])(\E\left[\epsilon_j - \E[\epsilon_j]\right])\right]_{ij} = \sigma^2 \I_n$$   \pause  $ \quad \Rightarrow
+  \Cov[\Y] = \sigma^2 \I_n$  (errors are uncorrelated) \pause
+\item $\eps_i \simiid \N(0, \sigma^2)$  implies that $Y_i \ind \N(\mu_i, \sigma^2)$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame} \frametitle{Likelihood Functions}
+
+The likelihood function for $\mub, \sigma^2$ is proportional to the
+sampling distribution of the data \pause
+
+\begin{eqnarray*}
+ \cL(\mub, \sigma^2) & \propto & \prod_{i = 1}^n \frac{1}{\sqrt{(2 \pi
+                                 \sigma^2)}} \exp{- \frac{1}{2}\left\{ \frac{( y_i
+                                 - \mu_i)^2}{\sigma^2} \right\}}
+                                 \pause \\
+ & \propto & (\alert<3>{2 \pi} \sigma^2)^{-n/2}
+ \exp{\left\{ - \frac 1 2  \frac{ \sum_i(Y_i - \mu_i)^2 )}{\sigma^2}
+\right\}}  \pause \\
+ & \propto & ( \sigma^2)^{-n/2}
+ \exp{\left\{ - \frac 1 2 \frac{(\Y - \mub)^T (\Y - \mub)}{\sigma^2}
+\right\}}  \pause \\
+   & \propto & (\sigma^2)^{-n/2}
+ \exp{\left\{ - \frac 1 2 \frac{\| \Y - \mub \|^2}{\sigma^2}
+\right\}} \\ \pause
+  & \propto &  (2 \pi)^{-n/2}
+| \I_n\sigma^2|^{-1/2}
+ \exp{\left\{ - \frac 1 2 \frac{\| \Y - \mub \|^2}{\sigma^2}
+\right\}}  \pause
+\end{eqnarray*}
+
+Last line is the density of $\Y \sim \N_n\left(\mu, \sigma^2 \I_n\right)$
+\end{frame}
+
+\begin{frame} \frametitle{MLEs}
+
+Find values of $\muhat$ and $\shat$ that maximize the likelihood
+$\cL(\mub, \sigma^2)$ for $\mub \in \bbR^n$ and $\sigma^2 \in \bbR^+$
+\pause
+  \begin{eqnarray*}
+ \cL(\mub, \sigma^2)
+    & \propto & (\sigma^2)^{-n/2}
+ \exp{\left\{ - \frac 1 2 \frac{\| \Y - \mub \|^2}{\sigma^2}
+\right\}} \\ \pause
+ \log(\cL(\mub, \sigma^2) )
+   & \propto & -\frac{n}{2} \log(\sigma^2)  - \frac 1 2 \frac{\| \Y - \mub \|^2}{\sigma^2}
+ \\ \pause
+\end{eqnarray*}
+or equivalently the log likelihood
+
+
+\vspace{18pt}
+Clearly, $\muhat = \Y$ but $\shat = 0$  is outside the parameter space
+\vspace{18pt}
+
+Need restrictions on $\mub = \X\b$
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Column Space}
+\begin{itemize}
+\item Let $\X_1, \X_2,\ldots, \X_p \in \bbR^n$  \pause
+\item The set of all linear combinations of $\X_1, \ldots, \X_p$ is
+  the space spanned by $\X_1, \ldots, \X_p \equiv S(\X_1, \ldots,
+  \X_p)$  \pause
+\item Let $\X = [ \X_1\X_2 \ldots \X_p]$ be a $n \times p$ matrix with
+  columns $\X_j$ then the column space of $\X$, $\alert<4>{C(\X) = S(\X_1, \ldots,
+  \X_p)}$ space spanned by the (column) vectors of $\X$ \pause
+\item $\mub \in C(\X): C(\X) = \{\mub \mid \mub \in \bbR^n \text{ such
+    that } \X \b =
+    \mub $ for some $\b \in \bbR^p\}$  (also called the Range of $\X$,
+    $R(\X)$) \pause
+\item $\b$ are the ``coordinates'' of $\mub$  in this space \pause
+\item $C(\X)$ is a subspace of $\bbR^n$
+\end{itemize}
+Many equivalent ways to represent the same mean vector -- inference
+should be independent of the coordinate system used \pause
+
+\end{frame}
+%\section{MLEs}
+
+%\section{Models}
+\begin{frame} \frametitle{Projections}
+  \begin{itemize}
+\item $\mub = \X \b$ with $\X$ full rank $\mub \in C(\X)$
+\item $\P_\X = \X (\X^T\X)^{-1} \X^T$
+\item $\P_\X$ is the orthogonal projection operator on the column
+  space of $\X$; e.g.
+\item $\P = \P^2$  idempotent (projection)  \pause
+  \begin{eqnarray*}
+ \P_X^2 = \P_\X \P_\X & = &\X(\X^T\X)^{-1} \X^T\X(\X^T\X)^{-1} \X^T   \pause \\
+             & = & \X(\X^T\X)^{-1}\X^T \pause\\
+ & = & \P_{\X} \pause
+  \end{eqnarray*}
+\item $\P = \P^T$ symmetry (orthogonal) \pause
+ \begin{eqnarray*}
+ \P_\X^T  & = & (\X(\X^T\X)^{-1}\X^T)^T \pause \\
+             & = & (\X^T)^T((\X^T\X)^{-1})^T(\X)^T \pause \\
+ & = &  \X(\X^T\X)^{-1}\X^T \pause \\
+ & = & \P_{\X} \pause
+  \end{eqnarray*}
+\item $\P_{\X} \mub = \P_{\X} \X \b = \X(\X^T\X)^{-1}\X^T
+  \X \b = \X\b = \mub$
+\end{itemize}
+\end{frame}
+
+\begin{frame} \frametitle{Projections}
+  Claim: $\I - \P_\X$ is an orthogonal projection onto $C(\X)^{\perp}$ \pause
+  \begin{itemize}
+  \item idempotent  \pause
+    \begin{eqnarray*}
+(\I - \P_{\X})^2 &= & (\I - \P_\X)(\I - \P_\X)  \pause \\
+& = & \I - \P_\X - \P_\X + \P_\X \P_\X       \pause \\
+& = & \I - \P_\X -\P_\X + \P_\X  \pause\\
+& = & \I - \P_\X  \pause
+    \end{eqnarray*}
+\item Symmetry $\I - \P_\X = (\I - \P_\X)^T$  \pause
+\item $\u \in C(\X)^{\perp} \Rightarrow \u \perp C(\X)$ that is $u \in
+  C(\X)^{\perp}$ and $v \in C(\X)$ then $\u^T\v = 0$
+
+\item $(\I -\P_\X) \u  = \u$  (projection)  \pause
+\item if $\v \in C(\X)$, $(\I - \P_\X ) \v = \v - \v = \zero$
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Log Likelihood}
+     $\Y \sim \N(\mub, \sigma^2 \I_n)$ with
+    $\mub = \X \b$  and $\X$ full column rank \\ \pause
+
+ Claim: Maximum Likelihood Estimator (MLE) of $\mub$ is
+    $\P_\X \Y$  \pause
+
+  \begin{itemize}
+\item Log Likelihood:  \pause
+
+$$ \log \cL(\mub, \sigma^2) =
+-\frac{n}{2} \log(\sigma^2)
+  - \frac 1 2 \frac{\| \Y - \mub \|^2}{\sigma^2}
+$$  \pause
+\item Decompose $\Y = \P_\X \Y + (\I - \P_\X) \Y$  \pause
+\item Use $\P_\X \mub = \mub$  \pause
+\item Simplify $\| \Y - \mub \|^2$
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Expand}
+
+  \begin{eqnarray*}
+    \| \Y - \mub \|^2 & = & \|  \alert<1>{ (\I- \P_\X) \Y + \P_x \Y} -
+    \mub \|^2 \pause \\
+  & = & \| (\I - \P_\X) \Y + \P_x \Y - \alert<2>{\P_\X}\mub \|^2 \pause \\
+  & = & \alert<3>{\|(\I -\P_\x)}\Y +  \alert<3>{\P_\X}(\Y  - \mub)
+  \|^2 \\\pause
+ & = & \alert<4>{\|(\I -\P_\x)\Y \|^2}\pause +  \alert<5>{\|
+   {\P_\X}(\Y  - \mub) \|^2} \pause + \alert<6-7>{\small{2 (\Y -
+\mub)^T \P_\X^T (\I - \P_\X) \Y }}\\ \pause
+ & = & \|(\I -\P_\x)\Y \|^2 +  \| {\P_\X}(\Y  - \mub) \|^2 + \alert<7>{0} \pause
+ \\
+ & = & \|(\I -\P_\x)\Y \|^2 +  \| {\P_\X}\Y  - \mub \|^2
+  \end{eqnarray*}  \pause
+Crossproduct term is zero \pause
+
+\begin{eqnarray*}
+  \P_\X^T (\I - \P_\X) & = &  \P_\X (\I - \P_\X) \pause \\
+  & = &  \P_\X - \P_\X\P_\X \pause \\
+ & = &  \P_\X - \P_\X  \pause \\
+& = & 0
+\end{eqnarray*}
+\end{frame}
+\begin{frame}
+  \frametitle{Likelihood}
+Substitute decomposition into log likelihood
+\begin{eqnarray*}
+ \log \cL(\mub, \sigma^2)  & = &
+-\frac{n}{2} \log(\sigma^2)
+  - \frac 1 2 \frac{\| \Y - \mub \|^2}{\sigma^2} \pause \\
+  & = & -\frac{n}{2} \log(\sigma^2)  - \frac 1 2 \left( \frac{\|(\I - \P_\X)
+  \Y \|^2}{\sigma^2}
+ + \frac{\| \P_\X \Y - \mub\|^2 } {\sigma^2} \right)  \pause \\
+ & = &  \underbrace { -\frac{n}{2} \log(\sigma^2)  - \frac 1 2  \frac{\|(\I - \P_\X)
+  \Y \|^2}{\sigma^2} }  +  \underbrace{- \frac 1 2  \frac{\| \P_\X \Y -
+  \mub\|^2 } {\sigma^2}}  \pause \\
+ & = &  \text{ constant with respect to } \mub \pause \qquad  \leq 0
+\end{eqnarray*}   \pause
+Maximize with respect to $\mub$ for each $\sigma^2$ \pause
+
+RHS is largest when $\mub = \P_\X \Y$  for any choice of $\sigma^2$\pause
+$$\therefore \quad \muhat = \P_\X \Y$$
+is the MLE of $\mu$ \pause (yields fitted values $\Yhat = \P_\X \Y$)
+\end{frame}
+\begin{frame}
+  \frametitle{MLE of $\b$}
+  \begin{eqnarray*}
+   \cL(\mub, \sigma^2)  & = & -\frac{n}{2} \log(\sigma^2)  - \frac 1 2 \left( \frac{\|(\I - \P_\X)
+  \Y \|^2}{\sigma^2} + \frac{\| \P_\X \Y - \mub\|^2 } {\sigma^2} \right)  \pause \\
+ \cL(\b, \sigma^2 ) & = & -\frac{n}{2} \log(\sigma^2)  - \frac 1 2 \left( \frac{\|(\I - \P_\X)
+  \Y \|^2}{\sigma^2} + \frac{\| \P_\X \Y - \X\b\|^2 } {\sigma^2}
+\right)  \pause
+\end{eqnarray*}
+Similar argument to show that RHS is maximized by minimizing $$\| \P_\X
+\Y - \X\b\|^2$$ \pause
+Therefore $\bhat$ is  a MLE of $\b$ if and only if satisfies
+$$ \P_\X \Y = \X \bhat$$ \pause
+If $\X^T\X$ is full rank, the MLE of $\b$ is $$(\X^T\X)^{-1}\X^T\Y = \bhat$$
+\end{frame}
+
+\begin{frame}
+  \frametitle{MLE of $\sigma^2$}
+  \begin{itemize}
+  \item Plug-in MLE of $\muhat$ for $\mub$ and differentiate  with
+    respect to $\sigma^2$ \pause
+    \begin{eqnarray*}
+ \log \cL(\muhat, \sigma^2) & = &  -\frac{n}{2} \log \sigma^2 - \frac 1 2
+\frac{\| (\I - \P_\X) \Y \|^2  }{\sigma^2}   \pause \\
+\frac{\partial \, \log \cL(\muhat, \sigma^2)}{\partial \, \sigma^2} &
+= &  -\frac{n}{2} \frac{1}{\sigma^2}  +  \frac 1 2
+\| (\I - \P_\X) \Y \|^2 \left(\frac{1}{\sigma^2}\right)^2 \pause
+    \end{eqnarray*}
+\item Set derivative to zero and solve for MLE
+  \begin{eqnarray*}
+0 & = &  -\frac{n}{2} \frac{1}{\shat}  +  \frac 1 2
+\| (\I - \P_\X) \Y \|^2 \left(\frac{1}{\shat}\right)^2 \pause \\
+\frac{n}{2} \shat & = & \frac 1 2
+\| (\I - \P_\X) \Y \|^2 \pause \\
+\shat & = & \frac{\| (\I - \P_\X) \Y \|^2}{n}
+  \end{eqnarray*}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Estimate of $\sigma^2$}
+  Maximum Likelihood Estimate of $\sigma^2$
+  \begin{eqnarray*}
+    \shat & = & \frac{\| (\I - \P_\X) \Y \|^2}{n} \pause\\
+      & = & \frac{\Y^T(\I - \P_\X)^T(\I-\P_\X) \Y }{n} \pause\\
+ & = & \frac{ \Y^T(\I - \P_\X) \Y}{n} \pause\\
+ & = & \frac{\e^T\e} {n} \pause
+  \end{eqnarray*}
+where $\e = (\I - \P_\X)\Y$  \alert<5>{residuals} from the regression of $\Y$
+on $\X$
+\end{frame}
+% ended here 8/27/2015
+\begin{frame}
+  \frametitle{Geometric View}
+  \begin{itemize}
+  \item Fitted Values  $\Yhat = \P_\X \Y = \X \bhat$ \pause
+\item Residuals $\e = (\I - \P_\X) \Y$ \pause
+\item $\Y = \Yhat + \e$ \pause
+$$\| \Y \|^2 = \| \P_\X \Y \|^2 +  \| (\I- \P_\X)\Y\|^2  $$ \pause
+  \end{itemize}
+  \centerline{\includegraphics[height=2in]{OLS}}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Properties}
+ $\Yhat = \muhat$ is an unbiased estimate of $\mub = \X\b$
+\pause
+    \begin{eqnarray*}
+      \E [ \Yhat ]  & = & \E [\P_\X \Y ] \pause\\
+& = & \P_\X \E[\Y] \pause\\
+& = & \P_\X \mub \pause\\
+& = & \mub \pause
+    \end{eqnarray*}
+
+$\E[\e] = \zero$ if $\mub \in C(\X)$ \pause
+\begin{eqnarray*}
+      \E [ \e ]  & = & \E [(\I - \P_\X) \Y ] \pause\\
+& = & (\I - \P_\X) \E[\Y] \pause\\
+& = & (\I - \P_\X) \mub \pause\\
+& = & \zero \pause
+    \end{eqnarray*}
+Will not be $\zero$ if $\mub \notin C(\X)$  (useful for model checking)
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Estimate of $\sigma^2$}
+MLE of $\sigma^2$:
+  $$\shat = \frac{\e^T\e}{n} = \frac{\Y^T (\I - \P_\X) \Y}{n}$$
+\pause
+Is this an unbiased estimate of $\sigma^2$?
+\pause
+
+\vspace{1in}
+Need expectations  of quadratic forms $\Y^T \A \Y$ for $\A$ an
+ $n \times n$ matrix $\Y$ a random vector in $\bbR^n$
+\end{frame}
+\begin{frame}
+  \frametitle{Quadratic Forms}
+  Without loss of generality we can assume that $\A = \A^T$
+\pause
+  \begin{itemize}
+  \item $\Y^T \A \Y$ is a scalar \pause
+\item $\Y^T \A \Y  = (\Y ^T\A  \Y)^T = \Y^T \A^T \Y$ \pause
+  \begin{eqnarray*}
+ \frac{\Y^T \A \Y  + \Y^T \A^T \Y}{2} & = &
+\Y^T \A \Y  \pause \\
+    \Y^T\frac{(\A + \A^T)}{2}\Y  & = & \Y^T \A \Y \pause
+  \end{eqnarray*}
+\item may take $\A = \A^T$
+  \end{itemize}
+\end{frame}
+\begin{frame}
+  \frametitle{Expectations of Quadratic Forms}
+  \begin{theorem}
+   Let  $\Y$ be a random vector in $\bbR^n$ with $\E[\Y] = \mub$ and
+   $\Cov(\Y) = \Sigmab$.  \pause Then $\E[\Y^T \A \Y] = \tr \A \Sigma + \mub^T
+   \A \mub$.
+  \end{theorem} \pause
+Result useful for finding expected values of Mean Squares; no
+normality required!
+\end{frame}
+\begin{frame}
+  \frametitle{Proof}
+Start with $(\Y - \mub)^T\A (\Y - \mub)$,  expand and take
+expectations \pause
+  \begin{eqnarray*}
+\E [(\Y - \mub)^T\A (\Y - \mub)] & = & \E[\Y^T\A \Y + \mub^T\A \mub -
+    \mu^T\A \Y - \Y^T \A \mu] \pause \\
+ & = & \E[\Y^T\A \Y] + \mub^T\A \mub -
+\mub^T\A \mub - \mub^T\A \mub \pause \\
+ & = & \E[\Y^T\A \Y] - \mub^T\A \mub \pause
+  \end{eqnarray*}
+Rearrange \pause
+ \begin{eqnarray*}
+ \E[\Y^T\A \Y ] & = &  \E[ (\Y - \mub)^T\A (\Y - \mub)] + \mub^T\A
+ \mub \pause \\
+ & = & \E[ \tr (\Y - \mub)^T\A (\Y - \mub)] + \mub^T\A \mub  \pause\\
+ & = & \E[ \tr \A (\Y - \mub) (\Y - \mub)^T] + \mub^T\A
+ \mub \pause \\
+ & = &\tr  \E[ \A (\Y - \mub) (\Y - \mub)^T] + \mub^T\A \mub \pause \\
+ & = &\tr \A \E([ (\Y - \mub) (\Y - \mub)^T] + \mub^T\A \mub \pause \\
+ & = &\tr \A \Sigmab + \mub^T\A \mub  \pause
+\end{eqnarray*}
+\alert<12>{{\small{$\tr \A \equiv \sum_{i=1}^n a_{ii}$}}}
+\end{frame}
+\begin{frame}
+  \frametitle{Expectation of $\shat$}
+
+Use the theorem: \pause
+\begin{eqnarray*}
+\E[\Y^T (\I - \P_\X) \Y] & = &\tr (\I - \P_\X) \sigma^2 \I +
+\mub^T(\I - \P_\X) \mub  \pause \\
+ & = &  \sigma^2 \tr (\I - \P_\X) \pause \\
+ & = & \sigma^2 r(\I - \P_\X) \pause\\
+& = & \sigma^2 (n - r(\X)) \pause
+\end{eqnarray*}
+
+
+Therefore an unbiased estimate of $\sigma^2$ is $$\frac{\e^T\e}{n - r(\X)}$$
+\pause
+
+If $\X$ is full rank ($r(\X) = p$) and $\P_{\X} = \X(\X^T\X)^{-1} \X^T$ then the
+
+\begin{eqnarray*}
+\tr(\P_{\X}) & = & \tr( \X(\X^T\X)^{-1} \X^T) \\
+&  = &  \tr(\X^T\X(\X^T\X)^{-1}) \\
+&  = & \tr(\I_p) = p
+\end{eqnarray*}
+
+
+\end{frame}
+\begin{frame}
+  \frametitle{Spectral Theorem}
+  \begin{theorem}
+    If $\A$ ($n \times n$) is a symmetric real matrix  then there
+    exists a  $\U$ ($n \times n$) such that $\U^T\U = \U \U^T = \I_n$
+     and a diagonal matrix $\Lambdab$ with
+    elements $\lambda_i$ such that $\A = \U \Lambdab \U^T$
+  \end{theorem} \pause
+  \begin{itemize}
+  \item $\U$ is an orthogonal matrix; $\U^{-1} = \U^T$ \pause
+  \item The columns of $\U$ from an Orthonormal Basis for $\bbR^n$ \pause
+  \item rank of $\A$ equals the number of non-zero eigenvalues
+    $\lambda_i$ \pause
+  \item Columns of $\U$ associated with non-zero eigenvalues form an
+    ONB for $C(\A)$ (eigenvectors of $\A$) \pause
+\item $\A^p = \U \Lambdab^p \U^T$ (matrix powers) \pause
+\item a square root of $\A > 0$ is $\U \Lambdab^{1/2}\U^T$ \pause
+  \end{itemize}
+\end{frame}
+\begin{frame}
+  \frametitle{Projections}
+\begin{block}{Projection Matrix}
+If $\P$ is an orthogonal projection matrix, then its eigenvalues
+$\lambda_i$ are
+either zero or one with $\tr (\P) = \sum_i(\lambda_i) = r(\P)$
+\end{block} \pause
+\begin{itemize}
+\item   $\P = \U \Lambdab \U^T $  \pause
+\item $\P = \P^2$  $\Rightarrow$ $\U \Lambdab \U^T\U \Lambdab \U^T =
+  \U\Lambdab^2\U^T$  \pause
+\item $\Lambdab = \Lambdab^2$ is true only for $\lambda_i = 1$ or
+  $\lambda_i =0$  \pause
+\item Since $r(\P)$ is the number of non-zero eigenvalues, $r(\P) =
+  \sum \lambda_i = \tr(\P)$  \pause
+\end{itemize}
+$$\P = \left[\U_P \U_{P^\perp} \right]
+\left[
+  \begin{array}{ll}
+    \I_r & \zero \\
+    \zero & \zero_{n-r}
+  \end{array}
+\right] \left[
+  \begin{array}{l}
+    \U_P^T \\
+\U^T_{P^\perp}
+  \end{array}
+\right] = \U_P \U^T_P$$
+$$\P = \sum_{i=1}^r \u_i \u_i^T$$
+sum of $r$ rank 1 projections.
+\end{frame}
+
+\begin{frame}\frametitle{Next Class}
+
+  distribution theory
+
+  Continue Reading Chapter 1-2 and Appendices A \& B in Christensen
+\end{frame}
+\end{document}
+
+\begin{frame}
+  \frametitle{Independence or Zero Correlation}
+\vspace{-10pt}
+  \begin{eqnarray*}
+    \Cov(\e, \muhat) & = & \Cov((\I - \P_\X)\Y, \P_\X \Y) \pause\\
+ & = & (\I - \P_\X) \sigma^2 \I \P_\X^T \pause\\
+ & = & \sigma^2 (\I - \P_\X) \P_\X \pause\\
+& = & \sigma^2 (\P_\X - \P_\X\P_\X ) \pause\\
+& = & \sigma^2 (\P_\X - \P_\X) \pause \\
+& = & = \zero
+  \end{eqnarray*}
+Covariances of residuals \pause
+  \begin{eqnarray*}
+    \Cov(\e) & = & \Cov((\I - \P_\X)\Y) \pause \\
+ & = & (\I - \P_\X) \sigma^2 \I (\I - \P_\X) ^T\pause \\
+ & = & \sigma^2 (\I - \P_\X)(\I -  \P_\X) \pause\\
+& = & \sigma^2 (\I_\X - \P_\X) \pause \\
+  \end{eqnarray*}
+$$ \e \sim \N(\zero_n, \sigma^2 (\I_n - \P_\X))$$
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Generalize Inverses}
+
+A generalize inverse of $\A$: $\A^{-}$ satisfies   $\A \A^- \A = \A$
+
+
+Special Case: Moore-Penrose Generalized Inverse  \pause
+
+
+\begin{itemize}
+\item Decompose symmetric $\A = \U \Lambdab \U^T$  \pause
+\item $\A^-_{MP} = \U \Lambdab^- \U^T$  \pause
+\item $\Lambdab^-$ is diagonal with $$ \lambda_i^- = \left\{
+    \begin{array}{l}
+   1/\lambda_i \text{ if } \lambda_i \neq 0 \\
+   0 \quad \, \text{  if } \lambda_i = 0
+    \end{array}
+\right.$$  \pause
+\item Symmetric  $\A^-_{MP} = (\A^-_{MP})^T $  \pause
+\item Reflexive  $\A^-_{MP}\A \A^-_{MP} = \A^-_{MP} $  \pause
+\end{itemize}
+
+If $\P$ is an orthogonal projection matrix, the generalized inverse of
+$\P$, $\P^- = \P$
+
+
+\end{frame}
+\begin{frame} \frametitle{Models \& MLEs}
+  \begin{itemize}
+  \item   $\Y \sim \N(\mub, \sigma^2 \I_n)$ with $\mub \in C(\X)
+    \Leftrightarrow \mub = \X \b$  \pause
+  \item   Claim: Maximum Likelihood Estimator (MLE) of $\mub$ is
+    $\P_\X \Y$  \pause
+\item $\P_\X$ is the orthogonal projection operator on the column
+  space of $\X$; e.g. $\X$ full rank $\P_\X = \X (\X^T\X)^{-1} \X^T$
+  \pause
+\item If $\X^T\X$ is not invertible use a generalized inverse
+\end{itemize}
+\begin{lemma}[B.43]
+  If $\, \G$ and $\H$ are generalized inverses of $(\X^T\X)$ then
+  \begin{enumerate}
+  \item $\X \G \X^T \X = \X \H \X^T \X = \X$
+  \item $\X \G \X^T = \X \H \X^T$
+  \end{enumerate}
+\end{lemma} \pause
+$\P_\X = \X (\X^T\X)^{-} \X^T$ is the orthogonal projection operator
+onto $C(\X)$   (does not depend on choice of generalized inverse!)
+[See proof in Theorem B.44]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Identifiability}
+$\Y \sim \N(\mub, \sigma^2 \I)$  \pause
+  \begin{itemize}
+  \item Distribution of $\Y$ determined by $\mub$ and $\sigma^2$  \pause
+\item $\mub = \X\b = \mu(\b)$  \pause
+\end{itemize}
+  \begin{block}{Identifiability}
+$\b$ and $\sigma^2$ are identifiable if distribution of $\Y$, $f_\Y(\y;
+\b_1, \sigma^2_1) = f_\Y(\y;
+\b_2, \sigma^2_2)$ implies that $(\b_1, \sigma^2_1)^T =  (\b_2, \sigma^2_2)^T$
+  \end{block}  \pause
+For linear models, equivalent definition is that $\b$ is identifiable
+if for any $\b_1$ and $\b_2$ $\mu(\b_1) = \mu(\b_2)$ implies that
+$\b_1 = \b_2$.  If $ r(\X) = p$ then $\b$ is identifiable
+ \pause
+\vspace{12pt}
+If $\X$ is not full rank, there exists $\b_1 \neq \b_2$, but $\X\b_1 = \X\b_2$
+\end{frame}
+
+\begin{frame}
+  \frametitle{MLE of $\b$}
+  \begin{eqnarray*}
+    \P_\X \Y & = & \X \bhat  \\
+\X(\X^T\X)^- \X^T\Y & =
+& \X \bhat
+  \end{eqnarray*}  \pause
+  \begin{itemize}
+\item If $\X^T\X$ is invertible, then
+$$\bhat = (\X^T\X)^{-1} \X^T\Y$$ and is unique  \pause
+
+\item But if $\X^T\X$ is  not invertible, $$\bhat = (\X^T\X)^{-} \X^T\Y$$ is
+one solution which depends on choice of generalized inverse
+ \pause
+  \end{itemize}
+
+What can we estimate uniquely?
+\end{frame}
+\begin{frame}
+  \frametitle{Non-Identifiable }
+  Recall the Oneway ANOVA model \pause
+$$\mu_{ij} = \mu + \tau_j$$ \pause
+\begin{itemize}
+\item Let $\b_{1} = (\mu, \tau_1, \ldots, \tau_J)^T$ \pause
+\item Let $\b_{2} = (\mu - 42, \tau_1 + 42, \ldots, \tau_J + 42)^T$ \pause
+\item Then $\mub_{1} = \mub_{2}$ even though different values of the
+  parameters  $\b_1 \neq \b_2$ \pause
+\item $\b$ is not identifiable \pause
+\item $\mub$ is identifiable, yet $\mub = \X \b$  (a linear
+  combination of $\b$) \pause
+\item Next class: what parameters  or combinations of parameters can we estimate?
+\end{itemize}
+
+\end{frame}

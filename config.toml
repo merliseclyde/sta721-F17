@@ -1,4 +1,5 @@
 baseurl = "https://stat.duke.edu/courses/Fall17/sta721/"  # End your URL with a `/` trailing slash.
+#baseurl="/"
 title = "STA 721 (Fall 2017)"
 copyright = "&copy; 2017 Merlise A Clyde"
 theme = "hugo-academic"
@@ -6,7 +7,7 @@ theme = "hugo-academic"
 # comment out for deployment
 # relativeurls = true
 # uncomment below for deployment
- canonifyURLs = true
+canonifyURLs = true
 enableEmoji = true
 footnotereturnlinkcontents = "<sup>^</sup>"
 

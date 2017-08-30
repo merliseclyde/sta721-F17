@@ -1,10 +1,11 @@
 +++
 date = "2017-08-29"
-title = "HW 0"
+title = "template"
 abstract = ""
 abstract_short = ""
+draft = true
 
-selected = true
+selected = false
 math = true
 
 url_pdf = ""
