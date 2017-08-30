@@ -1,3 +1,4 @@
+%\documentclass[]{beamer}
 \documentclass[handout]{beamer}\usepackage[]{graphicx}\usepackage[]{color}
 %% maxwidth is the original width if it is less than linewidth
 %% otherwise use linewidth (to make sure the graphics do not exceed the margin)
@@ -61,7 +62,7 @@
 \institute{Merlise Clyde}
 \author{STA721 Linear Models Duke University \\
 }
-\date{August 28, 2017}
+\date{August 29, 2017}
 %\logo{duke.eps}
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \begin{document}
@@ -71,8 +72,8 @@
   \frametitle{Coordinates}
 \begin{itemize}
 \item Instructor: Merlise Clyde   \\ 214A Old Chemistry \\
- Office Hours MW 10:00-11:00 or  by appointment
-\item Teaching Assistants:
+ Office Hours: TBA \pause
+\item Teaching Assistants: Isaac Lavine \pause
 
 \item Course: Theory and Application of linear models from both a
 frequentist (classical) and Bayesian perspective \pause
@@ -83,7 +84,7 @@ frequentist (classical) and Bayesian perspective \pause
 \item Introduce  Bayesian methods, but assume that you are
   co-registered in 601 or have taken it previously \pause
 \item more info on Course Website
-  \url{http://stat.duke.edu/courses/Fall16/sta721}
+  \url{http://stat.duke.edu/courses/Fall17/sta721}
 \end{itemize}
   \end{frame}
 
@@ -95,10 +96,10 @@ frequentist (classical) and Bayesian perspective \pause
   \begin{itemize}
   \item Goals of Analysis?  \pause
     \begin{itemize}
-    \item Predictive models
-    \item Causal interpretation
-    \item Testing of hypotheses
-    \item confirmatory  or validation analyses
+    \item Predictive models \pause
+    \item Causal interpretation \pause
+    \item Testing of hypotheses \pause
+    \item confirmatory  or validation analyses  \pause
     \end{itemize}
  \item Observational versus Experimental data? \pause (Confounding) \pause
  \item Sampling Schemes \pause  Generalizibility \pause
@@ -106,12 +107,13 @@ frequentist (classical) and Bayesian perspective \pause
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{Prostate Example}
-  \begin{center}
- \includegraphics[height=3in]{prostfig1}
+ \begin{center}
+ \includegraphics[height=2.5in]{prostfig1}
 
-  \end{center}
+ \end{center}
+
 \end{frame}
 \begin{frame} \frametitle{Simple Linear Regression}
 Simple Linear Regression:
@@ -304,7 +306,7 @@ $$\sum_i  (Y_i - \x_i^T \b)^2 = (\Y - \X\b)^T(\Y - \X \b) = \| \Y -
   loss with other functions  \pause
 \item no notion of uncertainty of estimates  \pause
 \item no structure of problem  (repeated measures on individual,
-  randomization restrictions, etc)
+  randomization restrictions, etc) \pause
 \end{itemize}
 Need  Distribution Assumptions of $Y$ (or $\eps$) for testing and
 uncertainty measures \pause $\Rightarrow$ Likelihood  and Bayesian inference
@@ -330,6 +332,8 @@ uncertainty measures \pause $\Rightarrow$ Likelihood  and Bayesian inference
 Important to understand advantages and problems of each perspective!
 \end{frame}
 \end{document}
+
+
 \section{Random Vectors}
 \begin{frame}
   \frametitle{Random Vectors}
