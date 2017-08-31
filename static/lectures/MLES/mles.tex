@@ -1,13 +1,14 @@
 %\documentclass{beamer}
 \documentclass[handout]{beamer}
-%\usepackage[dvips]{color}
+
 \usepackage{graphicx}
 \usepackage{amsmath,amssymb,array,comment,eucal}
 \input{../macros}
 \usepackage{verbatim}
 
-\usetheme{Warsaw}
-\usecolortheme{orchid}
+\usetheme{default}
+\setbeamercolor{structure}{fg=cyan!90!black}
+
 \title{Maximum Likelihood Estimation}
 \subtitle{Merlise Clyde}
 \author{STA721 Linear Models}
@@ -127,10 +128,10 @@ Need restrictions on $\mub = \X\b$
     \mub $ for some $\b \in \bbR^p\}$  (also called the Range of $\X$,
     $R(\X)$) \pause
 \item $\b$ are the ``coordinates'' of $\mub$  in this space \pause
-\item $C(\X)$ is a subspace of $\bbR^n$
+\item $C(\X)$ is a subspace of $\bbR^n$  \pause
 \end{itemize}
 Many equivalent ways to represent the same mean vector -- inference
-should be independent of the coordinate system used \pause
+should be independent of the coordinate system used
 
 \end{frame}
 %\section{MLEs}
@@ -138,10 +139,10 @@ should be independent of the coordinate system used \pause
 %\section{Models}
 \begin{frame} \frametitle{Projections}
   \begin{itemize}
-\item $\mub = \X \b$ with $\X$ full rank $\mub \in C(\X)$
-\item $\P_\X = \X (\X^T\X)^{-1} \X^T$
+\item $\mub = \X \b$ with $\X$ full rank $\mub \in C(\X)$ \pause
+\item $\P_\X = \X (\X^T\X)^{-1} \X^T$  \pause
 \item $\P_\X$ is the orthogonal projection operator on the column
-  space of $\X$; e.g.
+  space of $\X$; e.g.  \pause
 \item $\P = \P^2$  idempotent (projection)  \pause
   \begin{eqnarray*}
  \P_X^2 = \P_\X \P_\X & = &\X(\X^T\X)^{-1} \X^T\X(\X^T\X)^{-1} \X^T   \pause \\

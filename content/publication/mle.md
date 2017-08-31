@@ -1,5 +1,5 @@
 +++
-abstract = "Maximum Likelihood estimation in linear models via Projections.  CLick on Details for additional information and supporting material"
+abstract = "Maximum Likelihood estimation in linear models via projections.  Click on Details for additional information and supporting material"
 abstract_short = ""
 authors = ["Merlise Clyde"]
 date = "2017-08-31"
@@ -26,9 +26,9 @@ url_video = ""
 +++
 
 
-In this lecture we will show how to use properties of projection matrices to find the maximum likelihood estimates of $\beta$ in a linear model, avoiding the use of derivatives. 
+In this lecture we will show how to use  projection matrices to find the maximum likelihood estimates of $\beta$ in a Gaussian linear model, avoiding the use of derivatives, but instead taking a geometric approach.
 
-Readings: [Christensen Chapter 1, Appendex A & B](http://getitatduke.library.duke.edu/?sid=sersol&SS_jc=TC0000508493&title=Plane%20Answers%20to%20Complex%20Questions%3A%20The%20Theory%20of%20Linear%20Models)
+Readings: [Christensen Chapter 1-2, Appendex A & B](http://getitatduke.library.duke.edu/?sid=sersol&SS_jc=TC0000508493&title=Plane%20Answers%20to%20Complex%20Questions%3A%20The%20Theory%20of%20Linear%20Models)
 
 Matrix Algebra Review from [StatSci Boot Camp](https://github.com/DukeStatSci/MathBootcamp2017/blob/master/Handouts/02_Matrices.pdf)
 
